@@ -27,9 +27,13 @@ In the backend I also feel really confident with the development technology, the
 [https://github.com/expressjs/expressjs.github.io](https://github.com/expressjs/expressjs.github.io)
 
 ##Gulp.js
+>The streaming build system. Automate and enhance your workflow. 
+
 [http://gulpjs.com/](http://gulpjs.com/)
 [https://github.com/gulpjs/gulp](https://github.com/gulpjs/gulp)
 
 ##Uno Ghost theme
+>The theme features a minimal, responsive design with a cover page, disqus comment integration, foundation icons and various colour options.
+
 [http://daleanthony.com/](http://daleanthony.com/)
 [https://github.com/daleanthony/uno](https://github.com/daleanthony/uno)
