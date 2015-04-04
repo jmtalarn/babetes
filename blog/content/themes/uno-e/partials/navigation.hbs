@@ -1,0 +1,11 @@
+<div class="blog-navigation">
+  <div class="navigation-wrapper ">
+    <nav class="cover-navigation cover-navigation--primary">
+      <ul class="navigation">
+        {{#foreach navigation}}
+        <li class="nav-{{slug}}{{#if current}} nav-current{{/if}} navigation__item" role="presentation"><a href="{{url absolute="true"}}" class="blog-button">{{label}}</a></li>
+        {{/foreach}}
+      </ul>
+    </nav>
+  </div>
+</div>

@@ -27,7 +27,7 @@ var AUTOPREFIXER_BROWSERS = [
 
 // Lint JavaScript
 gulp.task('jshint', function() {
-  return gulp.src(['public/js/**/*.js','blog/content/themes/uno/assets/js/**/*.js'])
+  return gulp.src(['public/js/**/*.js','blog/content/themes/uno-e/assets/js/**/*.js'])
     .pipe(reload({
       stream: true,
       once: true
@@ -55,7 +55,7 @@ gulp.task('images', function() {
 
 // Compile and automatically prefix stylesheets
 gulp.task('styles', function(cb) {
-  runSequence(['site styles', 'blog theme styles'],'copy blog theme', cb);
+  runSequence(['site styles', 'blog theme styles'],'propagate blog theme','copy blog theme', cb);
 });
 gulp.task('site styles', function() {
   // For best performance, don't add Sass partials to `gulp.src`
@@ -86,17 +86,22 @@ gulp.task('site styles', function() {
     }));
 });
 gulp.task('copy blog theme', function() {
-  return gulp.src([ 'blog/content/themes/uno/assets/css/**/*.css'])
+  return gulp.src([ 'blog/content/themes/uno-e/assets/css/**/*.css'])
   .pipe(replace('../','../../'))
     .pipe(gulp.dest('public/css/theme'));
 });
+gulp.task('propagate blog theme', function() {
+  return gulp.src([ 'blog/content/themes/uno-e/**/*'])
+    .pipe(gulp.dest('../ghost/content/themes/uno-e'));
+});
+
 gulp.task('blog theme styles', function() {
   // For best performance, don't add Sass partials to `gulp.src`
   del(['.tmp'], function (err, deletedFiles) {
       console.log('Files deleted:', deletedFiles.join(', '));
   });
   return gulp.src([
-      'blog/content/themes/uno/assets/scss/uno.scss'
+      'blog/content/themes/uno-e/assets/scss/uno-e.scss'
     ])
     .pipe($.sourcemaps.init())
     .pipe($.changed('.tmp/styles', {
@@ -114,7 +119,7 @@ gulp.task('blog theme styles', function() {
     .pipe(gulp.dest('.tmp/styles'))
     // Concatenate and minify styles
     .pipe($.if('*.css', $.csso()))
-    .pipe(gulp.dest('blog/content/themes/uno/assets/css'))
+    .pipe(gulp.dest('blog/content/themes/uno-e/assets/css'))
     .pipe($.size({
       title: 'blog theme styles'
     }));
@@ -159,7 +164,7 @@ gulp.task('serve', ['styles','jshint','images','bower','runapp'], function() {
   });
 
   gulp.watch(['views/**/*.hbs'],[reload]);
-  gulp.watch(['public/scss/**/*.scss','blog/content/themes/uno/assets/scss/**/*.scss'], ['styles', reload]);
+  gulp.watch(['public/scss/**/*.scss','blog/content/themes/uno-e/assets/scss/**/*.scss'], ['styles', reload]);
     gulp.watch(['public/js/**/*.js'], ['jshint',reload]);
   gulp.watch(['public/images/**/*'], ['images', reload]);
 

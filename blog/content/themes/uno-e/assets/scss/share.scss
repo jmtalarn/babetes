@@ -1,0 +1,26 @@
+@import "helpers.scss";
+
+.share-box {
+  margin-bottom: 3em;
+
+  #share-icons {
+    float: right;
+    margin:0;
+
+    li {
+        display: inline-block;
+        margin-right: 1.2em;
+        a {
+            i { font-size: 2em;}
+            color: black;
+            text-decoration: none;
+            -webkit-font-smoothing: none;
+
+            @include opacity(0.50);
+            &:hover {
+              @include opacity(1);
+            }
+          }
+        }
+    }
+}
