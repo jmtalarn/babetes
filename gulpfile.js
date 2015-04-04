@@ -27,7 +27,7 @@ var AUTOPREFIXER_BROWSERS = [
 
 // Lint JavaScript
 gulp.task('jshint', function() {
-  return gulp.src(['public/js/**/*.js','blog/content/themes/uno-e/assets/js/**/*.js'])
+return gulp.src(['public/js/**/*.js','blog/content/themes/uno-e/assets/js/**/*.js'])
     .pipe(reload({
       stream: true,
       once: true
@@ -165,7 +165,7 @@ gulp.task('serve', ['styles','jshint','images','bower','runapp'], function() {
 
   gulp.watch(['views/**/*.hbs'],[reload]);
   gulp.watch(['public/scss/**/*.scss','blog/content/themes/uno-e/assets/scss/**/*.scss'], ['styles', reload]);
-    gulp.watch(['public/js/**/*.js'], ['jshint',reload]);
+  gulp.watch(['public/js/**/*.js'], ['jshint',reload]);
   gulp.watch(['public/images/**/*'], ['images', reload]);
 
 });

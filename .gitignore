@@ -22,5 +22,12 @@ lib
 
 public/components
 
+#Bower libraries folders
+lib
+public/components
+
+#blog content data
+blog/content/data
+
 # Users Environment Variables
 .lock-wscript
