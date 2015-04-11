@@ -92,6 +92,7 @@ gulp.task('copy blog theme', function() {
 });
 gulp.task('propagate blog theme', function() {
   return gulp.src([ 'blog/content/themes/uno-e/**/*'])
+  .pipe(replace('/blog/#blog','/#blog'))
     .pipe(gulp.dest('../ghost/content/themes/uno-e'));
 });
 
